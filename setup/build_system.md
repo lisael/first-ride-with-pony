@@ -11,21 +11,26 @@ Mine is `make`.
 
 Here's the Makefile stub that will grow with the project:
 
-`commit 02fbd64`
+`commit c7848fe`
 
 `Makefile`
 
 ``` Makefile
-BIN_NAME=$(shell basename `pwd` )
+BUILD_DIR=build
+PONYC=ponyc
+PONY_SRC=$(wildcard **/*.pony) $(wildcard *.pony)
+BIN=$(BUILD_DIR)/$(shell basename `pwd` )
 
-all: clean $(BIN_NAME)
+all: $(BUILD_DIR) $(BIN)
 
-$(BIN_NAME):
-	ponyc
+$(BUILD_DIR):
+	mkdir -p $(BUILD_DIR)
+
+$(BIN): $(PONY_SRC)
+	$(PONYC) -o $(BUILD_DIR)
 
 clean:
-	-rm $(BIN_NAME)
-	-rm $(BIN_NAME).o
+	-rm -rf $(BUILD_DIR)
 
 # debug
 print-%  :
