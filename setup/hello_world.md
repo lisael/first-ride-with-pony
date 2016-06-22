@@ -31,7 +31,9 @@ actor Main
     env.out.write("Hello, Pony\n")
 ```
 
-I won't spend a lot of time on these lines of code, as you probably already read [the excellent tutorial](http://tutorial.ponylang.org/getting-started/how-it-works.html).
+I won't spend a lot of time on these lines of code, as you probably already
+read [the excellent
+tutorial](http://tutorial.ponylang.org/getting-started/how-it-works.html).
 
 We can now compile and run the package:
 
