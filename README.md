@@ -5,10 +5,17 @@ The missing step-by-step pony tutorial.
 In this tutorial we will build a Raft cluster from the ground up. In each step
 we'll introduce new concepts, techniques, pony idioms, caveats, tips and tricks.
 
+The code of pony-raft project is [hosted on github](https://github.com/lisael/pony-raft)
+
+> Note: I'm a pony noob, not a guru. The code, tips and tricks in this tutorial
+> come from my readings, my experience in coding and my short experience
+> in pony. Neither the code or the tutorial have been reviewed yet. THIS TEXT
+> COMES AS-IS, WITHOUT ANY GUARANTEE, AT ALL.
+
 ## What is Pony, anyway?
 
-Well I guess, if you ask this question, that you have to shut down your computer
-and take a walk. You clicked too much, too far. How the hell did you find this
+Well... I guess, if you ask this question, that you have to shut down your computer
+and take a walk. You already clicked too much, too far. How the hell did you find this
 book??
 
 Anyway, I don't judge, and I gladly welcome any reader, but I think that reading
@@ -26,7 +33,7 @@ read a lot of code, even the compiler itself, and the few available examples to
 figure out how some Pony constructs work (`delegate`, generics...). I'm not
 sure I can fill the blanks in [the official
 tutorial](http://tutorial.ponylang.org/) already. Building a mid-sized project and
-explaining every line are two great ways to learn a language.
+explaining every line of code are two great ways to learn a language.
 
 ## Why Pony?
 
@@ -63,7 +70,7 @@ Pony.
 * It relies on asynchronous calls, where pony excels
 * It relies on network
 * I know the algorithm
-* It's fun and useful (think etcd that relies on Raft)
+* It's fun and useful (think etcd. It relies on Raft)
 
 ## Who are you?
 
@@ -83,5 +90,5 @@ and Rust.
 
 Yes! Fork the repo and send a metric ton of pull request goodness. You may also
 fill an issue on [github](https://github.com/lisael/first-ride-with-pony) As I
-hope you did not guess yet, I'm not a native English speaker, I won't get upset
+hope you did not guess yet, I'm not a native English speaker. I won't get upset
 at all if the PR/issue is about grammar, spelling, syntax or vocabulary.
