@@ -20,11 +20,13 @@ Let's create the package and a program
 $ mkdir pony-raft
 $ cd pony-raft
 $ git init
+# create the package dir
+$ mkdir raft
 ```
 
 `commit 4b8f70ba`
 
-`main.pony`
+`raft/main.pony`
 ``` pony
 actor Main
   new create(env: Env) =>
@@ -38,9 +40,9 @@ tutorial](http://tutorial.ponylang.org/getting-started/how-it-works.html).
 We can now compile and run the package:
 
 ```
-$ ponyc
+$ ponyc raft
 Building builtin -> /usr/local/lib/pony/0.2.1-955-g4eb42e2/packages/builtin
-Building . -> /home/bdupuis/projects/perso/pony-raft
+Building raft -> /home/lisael/pony-raft/raft
 Generating
  Reachability
  Selector painting
@@ -50,15 +52,16 @@ Generating
  Functions
  Descriptors
 Optimising
-Writing ./pony-raft.o
-Linking ./pony-raft
+Writing ./raft.o
+Linking ./raft1
 ```
 
 This create an executable file named after the enclosing package:
 
 ```
-$ ls
-main.pony pony-raft
-$ ./pony-raft
+$ ./raft1
 Hello, Pony
 ```
+
+The `1` at the end of `raft1` was added by `ponyc` to resolve the name collision
+with the package `raft/`. We need to build our program more cleanly

@@ -11,23 +11,22 @@ Mine is `make`.
 
 Here's the Makefile stub that will grow with the project:
 
-`commit c7848fe`
-
 `Makefile`
 
 ``` Makefile
+PKG=raft
 BUILD_DIR=build
 PONYC=ponyc
-PONY_SRC=$(wildcard **/*.pony) $(wildcard *.pony)
-BIN=$(BUILD_DIR)/$(shell basename `pwd` )
+PONY_SRC=$(wildcard **/*.pony)
+BIN=$(BUILD_DIR)/$(PKG)
 
 all: $(BUILD_DIR) $(BIN)
 
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
 
-$(BIN): $(PONY_SRC)
-	$(PONYC) -o $(BUILD_DIR)
+$(BIN): $(PONY_SRC) 
+	$(PONYC) -o $(BUILD_DIR) $(PKG)
 
 clean:
 	-rm -rf $(BUILD_DIR)
@@ -38,5 +37,5 @@ print-%  :
 ```
 
 Note that even if we could improve this Makefile you can use it as-is in all of
-your simple Pony projects. I'll try to keep this property all along the
-tutorial.
+your simple Pony projects just changing `PKG` var. I'll try to keep this
+property all along the tutorial.

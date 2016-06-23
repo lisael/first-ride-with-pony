@@ -40,10 +40,11 @@ class iso _TestAdd is UnitTest
 `Makefile`
 
 ``` Makefile
+PKG=raft
 BUILD_DIR=build
 PONYC=ponyc
-PONY_SRC=$(wildcard **/*.pony) $(wildcard *.pony)
-BIN=$(BUILD_DIR)/$(shell basename `pwd` )
+PONY_SRC=$(wildcard **/*.pony)
+BIN=$(BUILD_DIR)/$(PKG)
 TEST_BIN=$(BUILD_DIR)/test
 
 all: $(BUILD_DIR) test $(BIN)
@@ -51,7 +52,7 @@ all: $(BUILD_DIR) test $(BIN)
 test: $(TEST_BIN) runtest
 
 $(TEST_BIN): $(PONY_SRC)
-	$(PONYC) -o $(BUILD_DIR) test
+	$(PONYC) -o $(BUILD_DIR) --path . test
 
 runtest:
 	./$(TEST_BIN)
@@ -60,7 +61,7 @@ $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
 
 $(BIN): $(PONY_SRC) 
-	$(PONYC) -o $(BUILD_DIR)
+	$(PONYC) -o $(BUILD_DIR) $(PKG)
 
 clean:
 	-rm -rf $(BUILD_DIR)
