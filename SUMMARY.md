@@ -5,6 +5,7 @@
   * [Testing your code](setup/testing.md)
   * [Documentation](setup/doc.md)
 * [Chapter 2: An asynchronous map](async_map/index.md)
+  * [Capabilities. Round 1](async_map/capabilities-round-1.md)
   * [Actors and behaviours](async_map/actors_and_behaviours.md)
   * [Intermezzo: Pony's asynchronous model](async_map/ponys_async_model.md)
   * [Asynchronous testing](async_map/async_testing.md)
@@ -13,3 +14,5 @@
   * [Configuration Files](cli/configuration.md)
   * [Logging](cli/logging.md)
 * [Chapter 4: Networking](networking/index.md)
+* [Appendix](appendix/index.md)
+  * [A - Troubleshooting](appendix/a-troubleshooting.md)
