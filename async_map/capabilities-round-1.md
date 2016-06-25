@@ -32,8 +32,8 @@ will soon make `delete` return `(I64 | None)` too.
 Pony has the keyword `type` that creates type alias. Here we could write 
 
 ```
-type RaftValue: I64
-type RaftResult: (RaftValue | None)
+type RaftValue is I64
+type RaftResult is (RaftValue | None)
 
 class _KVStore
   var _data: Map[String, RaftValue] = Map[String, RaftValue]
