@@ -189,7 +189,7 @@ not obvious that `set` and `delete` mutate the target while `get` doesn't.
 Let me introduce viewpoint adaptation. It's a fairly complex name for a simple
 concept: the capabilities of an instance's field is the least common denominator
 of the permissions on the reference of the target and the permissions on the
-field, as seen from within an target.
+field, as seen from within the target.
 
 The default capability of a field is `ref`, which means "I need to be able to
 read and write to the object". So, as seen from the function, `_data` should be
@@ -200,9 +200,6 @@ target. At this point the type checker yields. Hopefully it yields useful info,
 that is worth reading and understanding.
 
 First, it let us know where the error happened and what is the kind of the error.
-As you maybe noticed it's a type error. In pony `MyType ref` __is not the same
-type__ as `MyType box`, a bit like `const uint32` is not the same type as `uint32`
-in C++.
 
 ```
 Error:
@@ -211,10 +208,15 @@ Error:
                 ^
 ```
 
+> As you maybe noticed it's a type error. In pony `MyType ref` __is not the same
+> type__ as `MyType box`, a bit like `const uint32` is not the same type as `uint32`
+> in C++. This also means that capability checks are only performed during the
+> compilation. __The runtime doesn't know about capabilities__
+
 Then the compiler gives us hints to understand the error.
 
 > The readability is somewhat obfuscated by type alias and generics expansions.
-> In the message,  `HashMap[String val, I64 val, HashEq[String val] val]` is
+> In the message, `HashMap[String val, I64 val, HashEq[String val] val]` is
 > our `Map[String, I64]`.
 
 The caller point of view:
