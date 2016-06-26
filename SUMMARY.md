@@ -7,6 +7,7 @@
 * [Chapter 2: An asynchronous map](async_map/index.md)
   * [Capabilities. Round 1](async_map/capabilities-round-1.md)
   * [Testing private members](async_map/testing_private_members.md)
+  * [Capabilities. Round 2](async_map/capabilities_round_2.md)
   * [Actors and behaviours](async_map/actors_and_behaviours.md)
   * [Intermezzo: Pony's asynchronous model](async_map/ponys_async_model.md)
   * [Asynchronous testing](async_map/async_testing.md)
