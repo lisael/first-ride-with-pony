@@ -66,7 +66,7 @@ notifier.
 Second, we added an `iso` capability to the `RaftNotifier` argument of the
 behaviours. Behaviours only allow sendable references as argument. A sendable
 reference is one that can be safely shared between actors. If you own a
-[`ref`]("I need to thepermission to read and write"), you can't share it as-is
+[`ref`](# "I need to thepermission to read and write"), you can't share it as-is
 with another actor.
 
 
