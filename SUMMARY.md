@@ -9,6 +9,7 @@
   * [Testing private members](async_map/testing_private_members.md)
   * [Capabilities. Round 2](async_map/capabilities_round_2.md)
   * [Actors and behaviours](async_map/actors_and_behaviours.md)
+  * [The notifier pattern](async_map/notifier_pattern.md)
   * [Asynchronous testing](async_map/async_testing.md)
   * [Intermezzo: Pony's asynchronous model](async_map/ponys_async_model.md)
 * [Chapter 3: CLI](cli/index.md)
