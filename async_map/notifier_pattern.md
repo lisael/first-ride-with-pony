@@ -66,7 +66,27 @@ notifier.
 Second, we added an `iso` capability to the `RaftNotifier` argument of the
 behaviours. Behaviours only allow sendable references as argument. A sendable
 reference is one that can be safely shared between actors. If you own a
-[`ref`](# "I need to thepermission to read and write"), you can't share it as-is
-with another actor.
+[`ref`](# "I need to the permission to read and write"), you can't share it
+as-is with another actor. Two `ref` aliases can't live at the same time in
+separate actors. Imagine this code:
 
+```pony
+actor SchroedingerBox
+  be kitty_kitten(cat: Cat ref) =>
+    cat.eat()
 
+class Lab
+  let sbox: SchroedingerBox
+  fun cute_exeperiment() =>
+    let cat: Cat ref = cat.alive()
+    sbox.kitty_kitten(cat)
+    cat.kill()
+```    
+
+Will the cat eat something? Modern computing doesn't support the superposition
+of variables state (Is it the point of quantum computers? I should read a bit).
+Whatever, Schödinger is not our friend, as programmers. Pony won't let him do
+his experiments with your code.
+
+[`iso`](# "I need the only readable and writeable reference")
+is safe, because it 
