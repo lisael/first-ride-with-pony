@@ -67,10 +67,10 @@ class iso TestKVStoreSet is UnitTest
 ```
 
 Correct. The tests compile and pass. But what is the point of making a private
-member if the test package is still heavily coupled with this member tests ? If we
-refactor `raft/server` package, we will need to change `test` to add/remove
-tests. My solution is to provide a `TestList` in all packages, named `Tests`,
-and call its tests from our `test.Main` `TestList`.
+member if the test package is still heavily coupled with this member's tests ?
+If we refactor `raft/server` package, we will need to change `test` to
+add/remove tests. My solution is to provide a `TestList` in all packages, named
+`Tests`, and call its tests from our `test.Main` `TestList`.
 
 `raft/server/test.pony`
 ```pony
@@ -105,4 +105,4 @@ class iso _TestKVStoreSet is UnitTest
 ```
 
 Note that we made the tests themselves private. The only entry point is the class
-tests.
+`Tests`.

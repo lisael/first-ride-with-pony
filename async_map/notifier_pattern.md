@@ -78,15 +78,25 @@ actor SchroedingerBox
 class Lab
   let sbox: SchroedingerBox
   fun cute_exeperiment() =>
-    let cat: Cat ref = cat.alive()
+    let cat: Cat ref = Cat.alive()
     sbox.kitty_kitten(cat)
     cat.kill()
 ```    
 
 Will the cat eat something? Modern computing doesn't support the superposition
-of variables state (Is it the point of quantum computers? I should read a bit).
-Whatever, Schödinger is not our friend, as programmers. Pony won't let him do
+of variables states (Is it the point of quantum computers? I should read a bit).
+Whatever, Mr Schödinger is not our friend, as programmers. Pony won't let him do
 his experiments with your code.
 
-[`iso`](# "I need the only readable and writeable reference")
-is safe, because it 
+[`iso`](# "I need the globally unique readable and writeable reference") is
+safe, because it guarantees the global uniqueness of the reference. When you
+pass an `iso` to a method call you have to
+[`consume`]{http://tutorial.ponylang.org/capabilities/consume-and-destructive-read.html}
+it. It's no longer available in the caller's code. Because it enforces this
+rule, the compiler know that it's always safe to read an write an `iso`. We may
+need to mutate the RaftNotifier, so we accept `iso` here.
+
+There are two more sendable reference capabilities: `var` and `tag`. `var` references
+are globally immutable. As a consequence, it's always safe to read from as no one
+can write to. `tag` is opaque. Because the callee can't read or write it, the rest
+of the code can safely do anything with the reference's aliases while the callee uses it. 

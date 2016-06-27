@@ -60,7 +60,8 @@ even the most restrictive.
 Because behaviours are asynchronous, there is no point defining a return
 type, as the caller function will never see the result. Behaviour calls
 are not blocking (remember? No blocking call. Never) and they return
-immediately the receiver actor to allow us to chain the code.
+immediately the receiver actor to allow us to chain the behaviours
+calls.
 
 What if I still __really need__ the result of a behaviour in the caller
 function? Well, you can write a blocking object, that you sync with locks,
