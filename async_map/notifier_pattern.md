@@ -63,12 +63,14 @@ usable in some ways we don't imagine yet. At least it's useful for the tests,
 as we'll see in the next section, to test the actor, we will define a custom
 notifier.
 
-Second, we added an `iso` capability to the `RaftNotifier` argument of the
+Second, we added an [`iso`](# "I need the globally unique readable and
+writeable reference") capability to the `RaftNotifier` argument of the
 behaviours. Behaviours only allow sendable references as argument. A sendable
 reference is one that can be safely shared between actors. If you own a
 [`ref`](# "I need to the permission to read and write"), you can't share it
-as-is with another actor. Two `ref` aliases can't live at the same time in
-separate actors. Imagine this code:
+as-is with another actor. Two [`ref`](# "I need to the permission to read and
+write") aliases can't live at the same time in separate actors. Imagine this
+code:
 
 ```pony
 actor SchroedingerBox
@@ -90,13 +92,19 @@ his experiments with your code.
 
 [`iso`](# "I need the globally unique readable and writeable reference") is
 safe, because it guarantees the global uniqueness of the reference. When you
-pass an `iso` to a method call you have to
-[`consume`]{http://tutorial.ponylang.org/capabilities/consume-and-destructive-read.html}
+pass an [`iso`](# "I need the globally unique readable and writeable
+reference") to a method call you have to
+[`consume`](http://tutorial.ponylang.org/capabilities/consume-and-destructive-read.html)
 it. It's no longer available in the caller's code. Because it enforces this
-rule, the compiler know that it's always safe to read an write an `iso`. We may
-need to mutate the RaftNotifier, so we accept `iso` here.
+rule, the compiler know that it's always safe to read an write an [`iso`](# "I
+need the globally unique readable and writeable reference"). We may need to
+mutate the `RaftNotifier`, so we accept [`iso`](# "I need the globally unique
+readable and writeable reference") here.
 
-There are two more sendable reference capabilities: `var` and `tag`. `var` references
-are globally immutable. As a consequence, it's always safe to read from as no one
-can write to. `tag` is opaque. Because the callee can't read or write it, the rest
-of the code can safely do anything with the reference's aliases while the callee uses it. 
+There are two more sendable reference capabilities: [`var`](# "Globally
+immutable") and [`tag`](# "I don't need to read or write, only identity and
+behaviours"). [`var`](# "Globally immutable") references are globally
+immutable. As a consequence, it's always safe to read from as no one can write
+to. [`tag`](# "I don't need to read or write, only identity and behaviours") is
+opaque. Because the callee can't read or write it, the rest of the code can
+safely do anything with the reference's aliases while the callee uses it. 

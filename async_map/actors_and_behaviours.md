@@ -45,8 +45,10 @@ and actors.
 ### Behaviours receiver capability
 
 We can't specify receiver capability on behaviours because behaviours are
-allways called on `tag` capability. `tag` means "I need no read/write
-permission on this object".
+allways called on [`tag`](# "I don't need to read or write, only identity and
+behaviours") capability. [`tag`](# "I don't need to read or write, only
+identity and behaviours") means "I need no read/write permission on this
+object".
 
 What's the point of owning a reference of something we can't read or write?
 First, we can still compare identity. Second, we can still call behaviours.

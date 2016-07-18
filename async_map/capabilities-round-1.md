@@ -51,10 +51,11 @@ data store to accept other types than I64.
 
 ### None
 
-None is something! Pony has no NULL pointer (thus no `NullPointerException`... Java readers
-start to sweat, just reading this word). Pythonists here may recognize their good ol' None.
-Well, actually... Because of static typing Pony's None never causes runtime exceptions (
-`NoneType has no attribute...`). None is a [`primitive`](http://tutorial.ponylang.org/types/primitives.html)
+None is something! Pony has no NULL pointer (thus no `NullPointerException`...
+Java readers start to sweat, just reading this word). Pythonists here may
+recognize their good ol' None.  Well, actually... Because of static typing
+Pony's None never causes runtime exceptions ( `NoneType has no attribute...`).
+None is a [`primitive`](http://tutorial.ponylang.org/types/primitives.html)
 
 ### Compile
 
@@ -170,14 +171,14 @@ OTOH, in pony these rules make it easy for the compiler to check data safety.
 
 So let's try to fix the code adding explicit capabilities to our class.
 
-The default capabilities on functions is `box` which means "I need to be able
-to read from this, but I won't write to it". Capabilities on functions are
-hints to the compiler to make it know the capabilities of the target in the
-calling code.
+The default capabilities on functions is [`box`](# "I need to be able to read
+from this, but I won't write to it") which means "I need to be able to read
+from this, but I won't write to it". Capabilities on functions are hints to the
+compiler to make it know the capabilities of the target in the calling code.
 
 In other words we promise to the compiler that we will never need a more
-permissive cap than `box` on references of the targets we call these
-functions on.
+permissive cap than [`box`](# "I need to be able to read from this, but I won't
+write to it") on references of the targets we call these functions on.
 
 The problem here is that we did break our promise, because we tried to mutate
 our object, at least in `set` and `delete`.
@@ -191,13 +192,18 @@ concept: the capabilities of an instance's field is the least common denominator
 of the permissions on the reference of the target and the permissions on the
 field, as seen from within the target.
 
-The default capability of a field is `ref`, which means "I need to be able to
-read and write to the object". So, as seen from the function, `_data` should be
-writeable. But because the function is only callable from a `box` target, the
-capabilities of `_data` become `box`, the least common denominator of `ref` and
-`box`. Then in `set` we try to call `Map.update`. `Map.update` only accept `ref`
-target. At this point the type checker yields. Hopefully it yields useful info,
-that is worth reading and understanding.
+The default capability of a field is [`ref`](# "I need to the permission to
+read and write"), which means "I need to be able to read and write to the
+object". So, as seen from the function, `_data` should be writeable. But
+because the function is only callable from a [`box`](# "I need to be able to
+read from this, but I won't write to it") target, the capabilities of `_data`
+become [`box`](# "I need to be able to read from this, but I won't write to
+it"), the least common denominator of [`ref`](# "I need to the permission to
+read and write") and [`box`](# "I need to be able to read from this, but I
+won't write to it"). Then in `set` we try to call `Map.update`. `Map.update`
+only accept [`ref`](# "I need to the permission to read and write") target. At
+this point the type checker yields. Hopefully it yields useful info, that is
+worth reading and understanding.
 
 First, it let us know where the error happened and what is the kind of the error.
 
@@ -246,7 +252,8 @@ And finally why they clash:
 
 ### A fix, finally
 
-Now the fix is obvious: allow `ref` target on offending functions:
+Now the fix is obvious: allow [`ref`](# "I need to the permission to read and
+write") target on offending functions:
 
 `raft/server/datastore.pony`
 
