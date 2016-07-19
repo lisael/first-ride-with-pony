@@ -77,18 +77,29 @@ actor SchroedingerBox
   be kitty_kitten(cat: Cat ref) =>
     cat.eat()
 
+  fun open() =>
+    cat.is_fed()
+
 class Lab
   let sbox: SchroedingerBox
   fun cute_exeperiment() =>
     let cat: Cat ref = Cat.alive()
     sbox.kitty_kitten(cat)
-    cat.kill()
+    cat.die()
 ```    
 
-Will the cat eat something? Modern computing doesn't support the superposition
-of variables states (Is it the point of quantum computers? I should read a bit).
-Whatever, Mr Schödinger is not our friend, as programmers. Pony won't let him do
-his experiments with your code.
+Will the cat eat something? In our `cute_experiment` we first tell the cat to
+eat, which it will eventually do. Eventually, I say, because `eat` is a
+behaviour. It's asynchronous, and the call to `eat` returns immediately without
+doing anything. Then, in (finally-not-so-)`cute_experiment` we kill the cat. Be
+`die` a function or a behaviour is not important, we can't predict which method
+(`eat` or `die`) will be executed first. Mr Shrödinger tells that as long as we
+don't `open` the box, we can tell that the cat is fed __and__ not fed with
+probabilities depending on a wave function. Modern computing doesn't support
+the superposition of variables states, yet (Is it the point of quantum
+computers? I should read a bit, I guess). Whatever, Mr Schödinger is not our
+friend, as programmers. Pony won't let him do his –pretty silly, if you ask me–
+experiments with your code and won't compile.
 
 [`iso`](# "I need the globally unique readable and writeable reference") is
 safe, because it guarantees the global uniqueness of the reference. When you
