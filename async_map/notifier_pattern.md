@@ -14,12 +14,12 @@ We will use a few of them in the tutorial.
 
 Here are 2 strategies
 
-In the pattern book, the notifier is a constructor argument of the actor.
-It's a common pattern in the standard lib, especially in networking stuff.
-The stdlib exposes an actor that does all the gory network details, and
-the user has only to write a notifier that react to events on the connection.
-Then, the user passes an instance of their notifier in the constructor of
-a connection. This instance is called for each event.
+In the pattern book, the notifier is a constructor argument of the actor. It's
+a common pattern in the standard lib, especially in networking stuff. The
+stdlib exposes an actor that does all the gory network details, and the user
+has only to write a notifier that reacts to events on the connection. Then,
+the user passes an instance of their notifier in the constructor of a
+connection. This instance is called for each event.
 
 Here, we will pass explicitly a notifier with each call to a behaviour.
 
@@ -107,7 +107,7 @@ pass an [`iso`](# "I need the globally unique readable and writeable
 reference") to a method call you have to
 [`consume`](http://tutorial.ponylang.org/capabilities/consume-and-destructive-read.html)
 it. It's no longer available in the caller's code. Because it enforces this
-rule, the compiler know that it's always safe to read an write an [`iso`](# "I
+rule, the compiler knows that it's always safe to read an write an [`iso`](# "I
 need the globally unique readable and writeable reference"). We may need to
 mutate the `RaftNotifier`, so we accept [`iso`](# "I need the globally unique
 readable and writeable reference") here.
