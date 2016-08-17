@@ -1,15 +1,15 @@
-# First ride with pony
+# First ride with Pony
 
 The missing step-by-step pony tutorial.
 
 In this tutorial we will build a Raft cluster from the ground up. In each step
-we'll introduce new concepts, techniques, pony idioms, caveats, tips and tricks.
+we'll introduce new concepts, techniques, Pony idioms, caveats, tips and tricks.
 
-The code of pony-raft project is [hosted on github](https://github.com/lisael/pony-raft)
+The code of the pony-raft project is [hosted on github](https://github.com/lisael/pony-raft)
 
-> Note: I'm a pony noob, not a guru. The code, tips and tricks in this tutorial
+> Note: I'm a Pony noob, not a guru. The code, tips and tricks in this tutorial
 > come from my readings, my experience in coding and my short experience
-> in pony. Neither the code or the tutorial have been reviewed yet. THIS TEXT
+> in Pony. Neither the code nor the tutorial have been reviewed yet. THIS TEXT
 > COMES AS-IS, WITHOUT ANY GUARANTEE, AT ALL.
 
 ## What is Pony, anyway?
@@ -22,13 +22,13 @@ Anyway, I don't judge, and I gladly welcome any reader, but I think that reading
 this tutorial requires at least a partial understanding of [the official
 tutorial](http://tutorial.ponylang.org/). If you didn't yet, read it and come back
 here. Don't be afraid if you don't catch all the subtleties, especially on
-capacities, Pony needs practice, and practicing is precisely what we're about to
-do here.
+[capabilities](http://tutorial.ponylang.org/capabilities/),
+Pony needs practice, and practicing is precisely what we're about to do here.
 
 ## Why this book?
 
 I'm new to Pony (who isn't?). At the moment, learning Pony requires a lot of
-personal investment. Large parts of Pony are simply not documented. One has to
+personal investment. Parts of Pony are simply not documented yet. One has to
 read a lot of code, even the compiler itself, and the few available examples to
 figure out how some Pony constructs work (`delegate`,
 [~~generics~~](http://tutorial.ponylang.org/generics/ "Thanks @doublec")...).
@@ -69,7 +69,7 @@ Pony.
 * It's large enough
 * It's not too large
 * It has a well defined and bounded scope
-* It relies on asynchronous calls, where pony excels
+* It relies on asynchronous calls, where Pony excels
 * It relies on network
 * I know the algorithm
 * It's fun and useful (think etcd. It relies on Raft)
