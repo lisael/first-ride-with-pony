@@ -30,10 +30,11 @@ do here.
 I'm new to Pony (who isn't?). At the moment, learning Pony requires a lot of
 personal investment. Large parts of Pony are simply not documented. One has to
 read a lot of code, even the compiler itself, and the few available examples to
-figure out how some Pony constructs work (`delegate`, generics...). I'm not
-sure I can fill the blanks in [the official
-tutorial](http://tutorial.ponylang.org/) already. Building a mid-sized project and
-explaining every line of code are two great ways to learn a language.
+figure out how some Pony constructs work (`delegate`,
+[~~generics~~](http://tutorial.ponylang.org/generics/ "Thanks @doublec")...).
+I'm not sure I can fill the blanks in [the official
+tutorial](http://tutorial.ponylang.org/) already. Building a mid-sized project
+and explaining every line of code are two great ways to learn a language.
 
 ## Why Pony?
 
